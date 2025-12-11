@@ -1,0 +1,14 @@
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.ok {
+    color: green;
+    font-size: 18px;
+}
+
+.feedback {
+    margin-bottom: 10px;
+}
+

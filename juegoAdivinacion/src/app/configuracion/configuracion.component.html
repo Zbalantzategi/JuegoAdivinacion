@@ -1,0 +1,76 @@
+<form [formGroup]="formulario" action="">
+    <label for="">Nombre</label>
+    <!--SECCIÓN NOMBRE-->
+    <input type="text" formControlName="nombre">
+    <div class="feedback">
+        <span *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched" class = "error">
+            El nombre no puede estar vacío
+        </span>
+        <span *ngIf="formulario.get('nombre')?.valid" class="ok">
+            ✅
+        </span>
+    </div>
+
+    <!--SECCIÓN APELLIDO-->
+    <label for="">Apellido</label>
+    <input type="text" formControlName="apellido">
+    <div class="feedback">
+        <span *ngIf="formulario.get('apellido')?.invalid && formulario.get('apellido')?.touched" class="error">
+            El apellido no puede estar vacío
+        </span>
+        <span *ngIf="formulario.get('apellido')?.valid">
+            ✅
+        </span>
+    </div>
+
+    <!--SECCIÓN INTENTOS-->
+    <label for="">Número de intentos</label>
+    <input type="number" formControlName="vidas">
+    <div class="feedback">
+        <span *ngIf="formulario.get('vidas')?.invalid && formulario.get('vidas')?.touched" class="error">
+            Introduce un número de intentos válido
+        </span>
+        <span *ngIf="formulario.get('vidas')?.valid">
+            ✅
+        </span>
+    </div>
+
+    <!--RANGO MÁXIMO-->
+    <label for="">Rango máximo</label>
+    <input type="number" formControlName="rangoMaximo">
+    <div class="feedback">
+        <span *ngIf="formulario.get('rangoMaximo')?.invalid && formulario.get('rangoMaximo')?.touched" class="error">
+            El rango debe ser como mínimo 4
+        </span>
+        <span *ngIf="formulario.get('rangoMaximo')?.valid">
+            ✅
+        </span>
+
+    </div>
+
+    <button (click) = "recogerDatos()" [disabled]="formulario.invalid" >
+        Recoger datos
+    </button>
+
+</form>
+
+<!--EJERCICO 2: JUEGO-->
+<div *ngIf="configGuardada">
+    <h2>Ongi Etorri {{formulario.get('nombre')?.value}} {{formulario.get('apellido')?.value}}</h2>
+</div>
+
+<div  *ngIf="configGuardada">
+    <form [formGroup]="FormIntento" action="">
+        <input type="number" formControlName="intento">
+        <button (click)="comprobarIntento()" [disabled]="FormIntento.invalid">
+            Enviar
+        </button>
+    </form>
+</div>
+
+<div>
+    <p>{{mensaje}}</p>
+</div>
+
+
+
